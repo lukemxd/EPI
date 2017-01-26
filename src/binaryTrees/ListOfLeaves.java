@@ -1,26 +1,25 @@
 package binaryTrees;
 
-import java.util.LinkedList;
-import java.util.List;
+import linkedLists.ListNode;
 
 //Problem 10.14
 public class ListOfLeaves {
 
-	public List<BinaryTreeNode<Integer>> create(BinaryTreeNode<Integer> root){
-		List<BinaryTreeNode<Integer>> leaves = new LinkedList<>();
+	public ListNode<BinaryTreeNode<Integer>> create(BinaryTreeNode<Integer> root){
+		ListNode<BinaryTreeNode<Integer>> leaves = new ListNode<>(null, null);
 		addLeavesToList(root, leaves);
 		return leaves;
 	}
 	
-	private static void addLeavesToList(BinaryTreeNode<Integer> root, List<BinaryTreeNode<Integer>> leaves){
+	private static void addLeavesToList(BinaryTreeNode<Integer> root, ListNode<BinaryTreeNode<Integer>> leaves){
 		BinaryTreeNode<Integer> current = root;
 		if(current != null){
 			if(current.left == null && current.right == null){
 				//Find the leaf node
-				leaves.add(current);
+				leaves.next = new ListNode<BinaryTreeNode<Integer>>(current, null);
 			}else{
-				addLeavesToList(current.left, leaves);
-				addLeavesToList(current.right, leaves);		
+				addLeavesToList(current.left, leaves.next);
+				addLeavesToList(current.right, leaves.next);		
 			}
 		}
 		

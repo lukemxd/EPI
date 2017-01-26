@@ -2,6 +2,7 @@ package binaryTrees;
 
 import java.util.ArrayList;
 import java.util.List;
+import linkedLists.ListNode;
 
 public class RootToLeaf {
 	
@@ -35,19 +36,19 @@ public class RootToLeaf {
 	}
 	
 	//Variant 1
-	public static List<linkedLists.ListNode<Integer>> pathNodesWithWeight(BinaryTreeNode<Integer> root, int targetWeight){
-		List<linkedLists.ListNode<Integer>> results = new ArrayList<>();
-		pathNodesWithWeightFinder(root, 0, targetWeight, results, new linkedLists.ListNode<Integer>(0, null));
+	public static List<ListNode<Integer>> pathNodesWithWeight(BinaryTreeNode<Integer> root, int targetWeight){
+		List<ListNode<Integer>> results = new ArrayList<>();
+		pathNodesWithWeightFinder(root, 0, targetWeight, results, new ListNode<Integer>(0, null));
 		return results;
 	}
 	
-	private static void pathNodesWithWeightFinder(BinaryTreeNode<Integer> root, int partialWeight, int targetWeight, List<linkedLists.ListNode<Integer>> results, linkedLists.ListNode<Integer> temp){
+	private static void pathNodesWithWeightFinder(BinaryTreeNode<Integer> root, int partialWeight, int targetWeight, List<ListNode<Integer>> results, ListNode<Integer> temp){
 		
 		if(root == null)
 			return;
 		
 		partialWeight += root.data;
-		temp.next = new linkedLists.ListNode<Integer>(root.data, null);
+		temp.next = new ListNode<Integer>(root.data, null);
 		temp = temp.next;
 		//Leaf
 		if(root.left == null && root.right == null){

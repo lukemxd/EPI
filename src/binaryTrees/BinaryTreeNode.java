@@ -4,7 +4,7 @@ public class BinaryTreeNode<T> {
 	
 	/**********Properties**********/
 	public T data;
-	public BinaryTreeNode<T> left, right, parent;
+	public BinaryTreeNode<T> left, right, parent, next; //next is the right sibling nodes
 	public boolean balanced;
 	public int height;
 	
