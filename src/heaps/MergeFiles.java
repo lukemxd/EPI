@@ -1,11 +1,12 @@
 package heaps;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-//Problem 11.1
+//Problem 11.1-11.2
 public class MergeFiles {
 	
 	public static class ArrayEntry {
@@ -19,6 +20,7 @@ public class MergeFiles {
 	}
 	
 	private static final int DEFAULT_INITIAL_CAPACITY = 16;
+	private static enum SubarrayType {INCREASING, DECREASING};
 	
 	public static List<Integer> mergeSortedArrays(List<List<Integer>> arrays){
 		List<Integer> result = new ArrayList<>();
@@ -49,6 +51,27 @@ public class MergeFiles {
 			result.add(head.value);
 		}
 		return result;
+	}
+	
+	//11.2
+	public static List<Integer> splitKIncreasingDecreasingArray(List<Integer> input){
+		List<List<Integer>> sortedArrays = new ArrayList<>();
+		SubarrayType subarrayType = SubarrayType.INCREASING;
+		int subarrayStartIdx = 0;
+		for(int i = 1; i < input.size(); ++i){
+			if(i == input.size() || (input.get(i - 1) > input.get(i) && subarrayType == SubarrayType.DECREASING) 
+				|| (input.get(i - 1) < input.get(i) && subarrayType == SubarrayType.INCREASING)){
+				List<Integer> subList = input.subList(subarrayStartIdx, i); 
+				if(subarrayType == SubarrayType.DECREASING)
+					Collections.reverse(subList);
+				sortedArrays.add(subList);
+				//Reverse the tendency
+				subarrayType = subarrayType == SubarrayType.DECREASING ? SubarrayType.INCREASING : SubarrayType.DECREASING;
+				subarrayStartIdx = i;
+			}
+		}
+		//Call 11.1
+		return mergeSortedArrays(sortedArrays);
 	}
 
 }
