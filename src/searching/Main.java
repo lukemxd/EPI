@@ -36,7 +36,7 @@ public class Main {
 	}*/
 	
 	//12.2
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String[] input;
 		System.out.println("Please enter the sorted input array delimited by space: ");
@@ -58,6 +58,50 @@ public class Main {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
+	}*/
+	
+	//12.3
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] input;
+		System.out.println("Please enter the sorted input cyclical array delimited by space: ");
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			if(reader != null){
+				input = reader.readLine().split(" ");
+				List<Integer> sortedArray = new ArrayList<>();
+				System.out.print("The input array is ");
+				for(String s : input){
+					sortedArray.add(Integer.parseInt(s));
+					System.out.print(s + " ");
+				}
+				System.out.println();
+				System.out.print("The smallest element is " 
+								  + BinarySearch.searchCyclicSmallest(sortedArray));
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
-
+	
+	//12.4, 12.5
+	/*public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String input;
+		System.out.println("Please enter the number to compute its square root: ");
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			if(reader != null){
+				input = reader.readLine();
+				//System.out.println("The square root is " 
+				//				  + BinarySearch.integerSquareRoot(Integer.parseInt(input)));
+				System.out.println("The float square root is " 
+						  + BinarySearch.squareRoot(Double.parseDouble(input)));
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}*/
 }
