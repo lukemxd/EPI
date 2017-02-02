@@ -106,7 +106,7 @@ public class Main {
 	}*/
 	
 	//12.7
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String[] input;
 		System.out.println("Please enter input array delimited by space: ");
@@ -120,6 +120,29 @@ public class Main {
 					inputArray.add(Integer.parseInt(s));
 				}
 				System.out.print(GeneralizedSearch.findMinMax(inputArray));
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}*/	
+	
+	//12.8
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] input;
+		System.out.println("Please enter input array delimited by space: ");
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			if(reader != null){
+				input = reader.readLine().split(" ");
+				List<Integer> inputArray = new ArrayList<>();
+				for(String s : input){
+					inputArray.add(Integer.parseInt(s));
+				}
+				System.out.println("Enter k: ");
+				Integer k = Integer.parseInt(reader.readLine());
+				System.out.println("The " + k + "th largest element is " + GeneralizedSearch.findKLargest(inputArray, k));
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
