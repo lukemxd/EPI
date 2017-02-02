@@ -1,6 +1,7 @@
 package searching;
 
 import java.util.List;
+import java.util.Random;
 
 //Problem 12.6-12.10
 public class GeneralizedSearch {
@@ -21,5 +22,62 @@ public class GeneralizedSearch {
 	}
 	
 	//12.7
+	public static String findMinMax(List<Integer> input){
+		int globalMax, globalMin;
+		if(input.size() <= 1){
+			globalMax = input.get(0);
+			globalMin = input.get(0);
+		}
+		//Initialize the global min and max if size > 1
+		if(Integer.compare(input.get(0), input.get(1)) > 0){
+			globalMax = input.get(0);
+			globalMin = input.get(1);
+		}else{
+			globalMax = input.get(1);
+			globalMin = input.get(0);
+		}
+		//Make sure if input has odd number of elements it won't cause overflow	
+		for(int i = 2; i + 1 < input.size(); i+=2){
+			int localMax, localMin;
+			if(Integer.compare(input.get(i), input.get(i + 1)) > 0){
+				localMax = input.get(i);
+				localMin = input.get(i + 1);
+			}else{
+				localMax = input.get(i + 1);
+				localMin = input.get(i);
+			}
+			globalMax = Math.max(globalMax, localMax);
+			globalMin = Math.min(globalMin, localMin);
+		}
+		//If odd number of elements
+		if(input.size() % 2 != 0){
+			globalMax = Math.max(globalMax, input.get(input.size() - 1));
+			globalMin = Math.min(globalMin, input.get(input.size() - 1));	
+		}
+		return "The max is " + globalMax + ", min is " + globalMin;
+	}
 	
+	//12.8
+	public static int findKLargest(List<Integer> input, int k){
+		int left = 0, right = input.size() - 1;
+		Random r = new Random(0);
+		while (left <= right) {
+			int pivotIdx = r.nextInt(right - left + 1) + left;
+			//Partition
+			int newPivotIdx = partition(input, left, right, pivotIdx);
+			if(newPivotIdx == k - 1)
+				return input.get(newPivotIdx);
+			else if(newPivotIdx < k - 1)
+				left = newPivotIdx + 1;
+			else
+				right = newPivotIdx - 1;
+		}
+		return -1;
+	}
+	
+	private static int partition(List<Integer> input, int left, int right, int pivotIdx){
+		int newPivotIdx = 0;
+		
+		return newPivotIdx;
+	}
 }

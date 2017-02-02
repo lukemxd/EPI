@@ -61,7 +61,7 @@ public class Main {
 	}*/
 	
 	//12.3
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String[] input;
 		System.out.println("Please enter the sorted input cyclical array delimited by space: ");
@@ -83,7 +83,7 @@ public class Main {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-	}
+	}*/
 	
 	//12.4, 12.5
 	/*public static void main(String[] args) {
@@ -104,4 +104,25 @@ public class Main {
 			ex.printStackTrace();
 		}
 	}*/
+	
+	//12.7
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] input;
+		System.out.println("Please enter input array delimited by space: ");
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			if(reader != null){
+				input = reader.readLine().split(" ");
+				List<Integer> inputArray = new ArrayList<>();
+				for(String s : input){
+					inputArray.add(Integer.parseInt(s));
+				}
+				System.out.print(GeneralizedSearch.findMinMax(inputArray));
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}	
 }
