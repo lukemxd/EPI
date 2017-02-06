@@ -35,5 +35,25 @@ public class Main {
 			ex.printStackTrace();
 		}
 	}
+	
+	//13.1
+	/*public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String input;
+		System.out.println("Please enter input string: ");
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			if(reader != null){
+				input = reader.readLine();
+				if(CharacterNumCompare.isPalindromic(input))
+					System.out.println("The string is palindromic");
+				else
+					System.out.println("The string is NOT palindromic");
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}*/
 
 }
