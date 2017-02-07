@@ -5,10 +5,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import hashTables.SmallestSubarray.SubArray;
+
 public class Main {
 
 	//13.0
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String[] input;
 		System.out.println("Please enter input strings delimited by space: ");
@@ -34,7 +36,7 @@ public class Main {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-	}
+	}*/
 	
 	//13.1
 	/*public static void main(String[] args) {
@@ -55,5 +57,35 @@ public class Main {
 			ex.printStackTrace();
 		}
 	}*/
+	
+	//13.7
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] input;
+		System.out.println("Please enter input text strings delimited by space: ");
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			if(reader != null){
+				input = reader.readLine().split(" ");
+				List<String> textArray = new ArrayList<>();
+				for(String s : input){
+					textArray.add(s);
+				}
+				System.out.println("Please enter subarray strings delimited by space: ");
+				input = reader.readLine().split(" ");
+				List<String> subArray = new ArrayList<>();
+				for(String s : input){
+					subArray.add(s);
+				}
+				SubArray result = SmallestSubarray.findSmallestSubarray(textArray, subArray);
+				System.out.println("The smallest subarray string starts at index " + result.startIdx
+								   + " and ends at index " + result.endIdx);
+				
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
 
 }
