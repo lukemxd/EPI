@@ -78,9 +78,14 @@ public class Main {
 				for(String s : input){
 					subArray.add(s);
 				}
-				SubArray result = SmallestSubarray.findSmallestSubarray(textArray, subArray);
+				//SubArray result = SmallestSubarray.findSmallestSubarray(textArray, subArray);
+				SubArray result = SmallestSubarray.findSmallestSubarrayWithOrder(textArray, subArray);
 				System.out.println("The smallest subarray string starts at index " + result.startIdx
-								   + " and ends at index " + result.endIdx);
+						   + " and ends at index " + result.endIdx);
+				//Variant 5
+				//SubArray result = SmallestSubarray.findLongestDistinctSubarray(textArray);
+				//System.out.println("The longest subarray string starts at index " + result.startIdx
+				//				   + " and ends at index " + result.endIdx);
 				
 			}
 		}catch(Exception ex){
