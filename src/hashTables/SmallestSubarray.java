@@ -2,11 +2,13 @@ package hashTables;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-//Problem 13.7 - 13.9
+//Problem 13.7 - 13.10
 public class SmallestSubarray {
 	
 	public static class SubArray{
@@ -163,5 +165,47 @@ public class SmallestSubarray {
 			}
 		}
 		return result;
+	}
+
+	//13.9
+	public static int findLengthOfLongestSubarray(List<String> text){
+		Map<String, Integer> latestOccurrence = new HashMap<>();
+		int result = 0, currentLongestSubStartIdx = 0;
+		for(int i = 0; i < text.size(); ++i){
+			//Return the previous value associated with the key
+			Integer dupIdx = latestOccurrence.put(text.get(i), i);
+			if(dupIdx != null){
+				if(dupIdx >= currentLongestSubStartIdx){
+					result = Math.max(result, i - currentLongestSubStartIdx);
+					currentLongestSubStartIdx = dupIdx + 1;
+				}
+			}
+		}
+		//Check for last string
+		result = Math.max(result, text.size() - currentLongestSubStartIdx);
+		return result;
+	}
+	
+	//13.10
+	public static int findLongestInterval(List<Integer> input){
+		Set<Integer> entries = new HashSet<>(input);
+		int longestInterval = 0;
+		while(!entries.isEmpty()){
+			Integer entry = entries.iterator().next();
+			entries.remove(entry);
+			//Check the existence of adjacent numbers of entry
+			int lowerBound = entry - 1;
+			while(entries.contains(lowerBound)){
+				entries.remove(lowerBound);
+				--lowerBound;
+			}
+			int upperBound = entry + 1;
+			while(entries.contains(upperBound)){
+				entries.remove(upperBound);
+				--upperBound;
+			}
+			longestInterval = Math.max(longestInterval, upperBound - lowerBound + 1);
+		}
+		return longestInterval;
 	}
 }
