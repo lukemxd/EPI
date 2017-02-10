@@ -59,7 +59,7 @@ public class Main {
 	}*/
 	
 	//13.7
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String[] input;
 		System.out.println("Please enter input text strings delimited by space: ");
@@ -91,6 +91,32 @@ public class Main {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-	}
+	}*/
 
+	//13.12
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] input;
+		System.out.println("Please enter input text string: ");
+		
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			if(reader != null){
+				String text = reader.readLine();
+				System.out.println("Please enter subarray strings delimited by space: ");
+				input = reader.readLine().split(" ");
+				List<String> subArray = new ArrayList<>();
+				for(String s : input){
+					subArray.add(s);
+				}
+				List<Integer> results = StringDecompositions.findAllStringConcatenations(text, subArray);
+				System.out.println("All sub strings concatenation starting indexes are ");
+				for(Integer s : results){
+					System.out.print(s + " ");
+				}
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}	
 }
