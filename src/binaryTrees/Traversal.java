@@ -53,7 +53,7 @@ public class Traversal {
 	public static void inOrderIteration(BinaryTreeNode<Integer> root){
 		Deque<BinaryTreeNode<Integer>> s = new LinkedList<>();
 		BinaryTreeNode<Integer> current = root;
-		while(!s.isEmpty()){
+		while(!s.isEmpty() || current != null){
 			if(current != null){
 				s.addFirst(current);
 				current = current.left;	
