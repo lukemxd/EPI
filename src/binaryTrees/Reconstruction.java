@@ -24,7 +24,7 @@ public class Reconstruction {
 		if(preorderStart >= preorderEnd || inorderStart >= inorderEnd)
 			return null;
 		
-		int rootInorderIndex = indexOfInorderNode.get(preorderStart);
+		int rootInorderIndex = indexOfInorderNode.get(preorder.get(preorderStart));
 		int leftSubtreeSize = rootInorderIndex - inorderStart;
 		
 		return new BinaryTreeNode<Integer>(preorder.get(preorderStart), 
